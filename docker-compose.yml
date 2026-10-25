@@ -1,0 +1,59 @@
+# ============================================================
+# docker-compose.yml — The Orchestrator
+# ============================================================
+# This version PULLS pre-built images from Docker Hub instead of
+# building from local source — this is how production deployments
+# (and this verification test) work.
+#
+# Run with:  docker compose up -d
+# Stop with: docker compose down
+# ============================================================
+
+services:
+
+  # ── 1. BACKEND (Node.js / Express) ────────────────────────
+  backend:
+    image: padfootworks/ricozfulfil-backend:latest
+
+    container_name: ricoz-backend
+
+    ports:
+      - "8000:8000"
+
+    # Load all secrets/config from backend/.env
+    env_file:
+      - ./backend/.env
+
+    restart: unless-stopped
+
+    networks:
+      - ricoz-network
+
+    volumes:
+      - backend-uploads:/app/public/uploads
+
+  # ── 2. FRONTEND (React + Vite → Nginx) ───────────────────
+  frontend:
+    image: padfootworks/ricozfulfil-frontend:latest
+
+    container_name: ricoz-frontend
+
+    ports:
+      - "3000:80"
+
+    depends_on:
+      - backend
+
+    restart: unless-stopped
+
+    networks:
+      - ricoz-network
+
+# ── NETWORKS ────────────────────────────────────────────────
+networks:
+  ricoz-network:
+    driver: bridge
+
+# ── VOLUMES ─────────────────────────────────────────────────
+volumes:
+  backend-uploads:

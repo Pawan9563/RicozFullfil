@@ -1,0 +1,41 @@
+# .dockerignore — Tell Docker what NOT to copy into the image
+#
+# Like .gitignore, but for Docker's "build context".
+# When you run "docker build", Docker sends all files in the context
+# folder to the Docker daemon. Excluding these speeds up builds massively.
+
+# Dependencies — these get reinstalled inside the container via npm ci
+node_modules
+**/node_modules
+
+# Build output — gets regenerated inside container
+dist
+build
+
+# Environment files — NEVER bake secrets into images!
+# Pass secrets via environment variables or Docker secrets instead.
+.env
+.env.*
+!.env.sample
+
+# Git files
+.git
+.gitignore
+
+# Logs
+*.log
+npm-debug.log*
+
+# Editor files
+.vscode
+.idea
+*.swp
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Docker files themselves (no need to copy them into the image)
+Dockerfile
+docker-compose.yml
+.dockerignore
