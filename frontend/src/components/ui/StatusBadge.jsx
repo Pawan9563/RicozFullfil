@@ -10,6 +10,8 @@ const getBadgeClass = (status) => {
     case "PACKED":
     case "RETURN_REFUNDED":
     case "RETURN_REPLACED":
+    case "APPROVED":
+    case "ONBOARDED":
       return "badge-success";
 
     case "CONFIRMED":
@@ -19,6 +21,8 @@ const getBadgeClass = (status) => {
     case "IN_TRANSIT":
     case "OUT_FOR_DELIVERY":
     case "RETURN_IN_TRANSIT":
+    case "CONTACTED":
+    case "KYC_VERIFIED":
       return "badge-info";
 
     case "ORDER_CREATED":
@@ -30,6 +34,7 @@ const getBadgeClass = (status) => {
     case "RETURN_REQUESTED":
     case "RETURN_APPROVED":
     case "PICKUP_SCHEDULED":
+    case "PENDING_REVIEW":
       return "badge-warning";
 
     case "CANCELLED":
@@ -37,6 +42,7 @@ const getBadgeClass = (status) => {
     case "RETURN_REJECTED":
     case "DAMAGED":
     case "SCRAP":
+    case "REJECTED":
       return "badge-danger";
 
     default:

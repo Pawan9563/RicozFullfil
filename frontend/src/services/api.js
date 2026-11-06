@@ -197,4 +197,12 @@ export const analyticsAPI = {
   getFulfillmentTimes: () => api.get("/analytics/fulfillment-times"),
 };
 
+export const onboardingAPI = {
+  submit: (data) => api.post("/onboarding", data),
+  getConfig: () => api.get("/onboarding/config"),
+  getAll: (params) => api.get("/onboarding", { params }),
+  getById: (id) => api.get(`/onboarding/${id}`),
+  updateStatus: (id, data) => api.patch(`/onboarding/${id}/status`, data),
+};
+
 export default api;

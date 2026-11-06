@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation, Link } from "react-router-dom";
 import { useAuth, getRoleDefaultPath, isPathAllowedForRole } from "../../context/AuthContext";
 import Input from "../../components/forms/Input";
 import Button from "../../components/forms/Button";
@@ -119,6 +119,34 @@ export const Login = () => {
         <div
           style={{
             marginTop: "1.5rem",
+            paddingTop: "1.25rem",
+            borderTop: "1px solid var(--border-color)",
+            textAlign: "center",
+          }}
+        >
+          <div style={{ fontSize: "0.8125rem", color: "var(--text-secondary)" }}>
+            Looking for enterprise fulfillment solutions?
+          </div>
+          <Link
+            to="/onboarding"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "0.35rem",
+              marginTop: "0.4rem",
+              fontSize: "0.875rem",
+              fontWeight: 600,
+              color: "var(--primary)",
+            }}
+          >
+            <span>Onboard your company with RicozFulfil</span>
+            <span>&rarr;</span>
+          </Link>
+        </div>
+
+        <div
+          style={{
+            marginTop: "1.25rem",
             textAlign: "center",
             fontSize: "0.75rem",
             color: "var(--text-muted)",

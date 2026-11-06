@@ -19,6 +19,8 @@ import ShipmentTracking from "./pages/ShipmentTracking/ShipmentTracking";
 import Returns from "./pages/Returns/Returns";
 import Analytics from "./pages/Analytics/Analytics";
 import UserManagement from "./pages/UserManagement/UserManagement";
+import CustomerOnboarding from "./pages/CustomerOnboarding/CustomerOnboarding";
+import OnboardingRequests from "./pages/OnboardingRequests/OnboardingRequests";
 
 import "./App.css";
 
@@ -35,6 +37,11 @@ export function App() {
     <AuthProvider>
       <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
         <Routes>
+          {/* Public Customer Onboarding Landing Page */}
+          <Route path="/onboarding" element={<CustomerOnboarding />} />
+          <Route path="/onboard" element={<Navigate to="/onboarding" replace />} />
+          <Route path="/get-started" element={<Navigate to="/onboarding" replace />} />
+
           {/* Public Auth Route */}
           <Route path="/login" element={<Login />} />
 
@@ -149,6 +156,14 @@ export function App() {
                 element={
                   <RoleRoute allowedRoles={["SUPER_ADMIN", "ADMIN"]}>
                     <UserManagement />
+                  </RoleRoute>
+                }
+              />
+              <Route
+                path="/onboarding-requests"
+                element={
+                  <RoleRoute allowedRoles={["SUPER_ADMIN", "ADMIN", "OPERATIONS_MANAGER"]}>
+                    <OnboardingRequests />
                   </RoleRoute>
                 }
               />

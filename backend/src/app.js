@@ -15,6 +15,7 @@ import packageRouter from "./routes/package.routes.js";
 import shipmentRouter from "./routes/shipment.routes.js";
 import returnRouter from "./routes/return.routes.js";
 import analyticsRouter from "./routes/analytics.routes.js";
+import onboardingRouter from "./routes/onboarding.routes.js";
 
 const app = express();
 
@@ -42,6 +43,7 @@ app.use("/api/v1/packages", packageRouter);
 app.use("/api/v1/shipments", shipmentRouter);
 app.use("/api/v1/returns", returnRouter);
 app.use("/api/v1/analytics", analyticsRouter);
+app.use("/api/v1/onboarding", onboardingRouter);
 
 // Global Error Handler Middleware
 app.use(errorHandler);

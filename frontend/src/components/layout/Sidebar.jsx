@@ -52,6 +52,11 @@ const navItems = [
     roles: ["SUPER_ADMIN", "ADMIN", "OPERATIONS_MANAGER"],
   },
   {
+    name: "Customer Onboarding",
+    path: "/onboarding-requests",
+    roles: ["SUPER_ADMIN", "ADMIN", "OPERATIONS_MANAGER"],
+  },
+  {
     name: "User Management",
     path: "/users",
     roles: ["SUPER_ADMIN", "ADMIN"],
